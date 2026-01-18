@@ -57,7 +57,7 @@ Buka browser dan akses:
 
 ### Admin
 - Email: `admin@jaystore.com`
-- Password: `admin123`
+- Password: `admin2026`
 
 ### Customer
 Daftar melalui halaman Register
@@ -161,3 +161,4 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ---
 
 Made with ❤️ for Jay Store
+
