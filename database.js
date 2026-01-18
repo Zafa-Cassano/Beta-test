@@ -1,35 +1,28 @@
 const mysql = require('mysql2/promise');
-
-// Konfigurasi database MySQL
 const dbConfig = {
-    host: 'localhost',
-    user: 'root',           // Ganti dengan username MySQL Anda
-    password: '',           // Ganti dengan password MySQL Anda
-    database: 'jaystore',
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || '',
+    database: process.env.DB_NAME || 'jaystore',
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
 };
 
-// Pool akan dibuat setelah database ada
 let pool = null;
 
-// Test koneksi dan buat database jika belum ada
 async function testConnection() {
     try {
-        // Pertama, koneksi tanpa database untuk membuat database
         const tempPool = mysql.createPool({
             host: dbConfig.host,
             user: dbConfig.user,
             password: dbConfig.password
         });
         
-        // Buat database jika belum ada
         await tempPool.query(`CREATE DATABASE IF NOT EXISTS ${dbConfig.database}`);
         console.log('✅ Database ready!');
         await tempPool.end();
         
-        // Sekarang buat pool dengan database
         pool = mysql.createPool(dbConfig);
         
         const connection = await pool.getConnection();
@@ -42,10 +35,8 @@ async function testConnection() {
     }
 }
 
-// Inisialisasi database dan tabel
 async function initDatabase() {
     try {
-        // Buat tabel users
         await pool.query(`
             CREATE TABLE IF NOT EXISTS users (
                 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -57,7 +48,6 @@ async function initDatabase() {
             )
         `);
         
-        // Buat tabel products
         await pool.query(`
             CREATE TABLE IF NOT EXISTS products (
                 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -74,7 +64,6 @@ async function initDatabase() {
             )
         `);
         
-        // Buat tabel cart
         await pool.query(`
             CREATE TABLE IF NOT EXISTS cart (
                 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -88,7 +77,6 @@ async function initDatabase() {
             )
         `);
         
-        // Buat tabel orders
         await pool.query(`
             CREATE TABLE IF NOT EXISTS orders (
                 id VARCHAR(50) PRIMARY KEY,
@@ -104,7 +92,6 @@ async function initDatabase() {
             )
         `);
         
-        // Buat tabel order_items
         await pool.query(`
             CREATE TABLE IF NOT EXISTS order_items (
                 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -119,7 +106,6 @@ async function initDatabase() {
             )
         `);
         
-        // Insert admin default jika belum ada
         const [admins] = await pool.query('SELECT * FROM users WHERE email = ?', ['admin@jaystore.com']);
         if (admins.length === 0) {
             const bcrypt = require('bcryptjs');
@@ -131,7 +117,6 @@ async function initDatabase() {
             console.log('✅ Default admin created: admin@jaystore.com / admin123');
         }
         
-        // Insert sample products jika belum ada
         const [products] = await pool.query('SELECT COUNT(*) as count FROM products');
         if (products[0].count === 0) {
             const sampleProducts = [
@@ -163,9 +148,7 @@ async function initDatabase() {
     }
 }
 
-// Fungsi untuk mendapatkan pool
 function getPool() {
     return pool;
 }
-
 module.exports = { getPool, testConnection, initDatabase };
