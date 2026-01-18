@@ -56,7 +56,7 @@ Buka browser dan akses:
 ## 👤 Akun Default
 
 ### Admin
-- Email: `admin@jaystore.com`
+- Email: `admin@.com`
 - Password: `admin2026`
 
 ### Customer
@@ -161,4 +161,5 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ---
 
 Made with ❤️ for Jay Store
+
 
