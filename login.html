@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Jay Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🛒</span> Jay Store
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="register.html" class="btn btn-outline btn-sm">Register</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Login Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h1><i class="fas fa-sign-in-alt"></i> Login</h1>
+                    <p>Masuk ke akun Jay Store Anda</p>
+                </div>
+                
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="loginEmail" required placeholder="Masukkan email">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-lock"></i> Password</label>
+                        <input type="password" id="loginPassword" required placeholder="Masukkan password">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Belum punya akun? <a href="register.html">Register di sini</a></p>
+                </div>
+                
+                <div class="demo-accounts">
+                    <h4>Demo Account:</h4>
+                    <p><strong>Admin:</strong> admin@jaystore.com / admin123</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Jay Store</h4>
+                    <p>Your trusted online shop for premium electronics and gadgets.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://facebook.com/jaystore.official" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/izaahmadfadil/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com/jaystore_id" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://youtube.com/@jaystoreofficial" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://tiktok.com/@jaystore.official" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Jay Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="database.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>
