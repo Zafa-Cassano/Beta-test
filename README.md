@@ -159,4 +159,5 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 | GET | /api/stats | Get statistik (admin) |
 
 ---
+
 Made with ❤️ for Jay Store
